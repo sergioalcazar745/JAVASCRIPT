@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Generar controles dinámicos</h1>
+    <input type="range" id="rango" min="1" max="14" value="1" onchange="crearImagenes()">
+    <p id="valorrango">1</p>
+    <div id="capa"></div>
+</body>
+<script>
+    function crearImagenes(){
+        var capa = document.getElementById("capa");
+        var rango = document.getElementById("rango");
+        document.getElementById("valorrango").innerText = rango.value;
+        var numeroImagenes = parseInt(rango.value);
+        //BUCLE PARA AGREGAR X IMAGENES
+        capa.innerHTML = "";
+        for (var i = 0; i < numeroImagenes; i++) {
+            //CREAMOS OBJETO IMAGEN POR CADA ITERACION
+            var imagen = document.createElement("img");
+            //ASIGNAMOS LAS PROPIEDADES QUE DESEEMOS
+            imagen.src = "images/imagen1.jpg";
+            imagen.width = "150";
+            imagen.height = "100";
+            //AGREGAMOS LA IMAGEN AL PARENT
+            capa.appendChild(imagen);
+            imagen.addEventListener("click", function(){
+                this.src = "images/imagen2.png";
+                capa.removeChild(this);
+            });
+        }
+    }
+</script>
+</html>

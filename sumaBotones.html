@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" id="boton1">4</button>
+    <button type="button" id="boton2">7</button>
+    <button type="button" id="boton3">2</button>
+    <button type="button" id="boton4">5</button><br>
+    <h1 id="resultado"></h1>
+</body>
+<script>
+    var total = 0;
+    window.onload = function(){
+        // var boton1 = document.getElementById("boton1");
+        // var boton2 = document.getElementById("boton2");
+        // var boton3 = document.getElementById("boton3");
+        // var boton4 = document.getElementById("boton4");
+        
+        // boton1.addEventListener("click", sumaNumero)
+        // boton2.addEventListener("click", sumaNumero)
+        // boton3.addEventListener("click", sumaNumero)
+        // boton4.addEventListener("click", sumaNumero)
+        //BUSCAMOS TODOS LOS OBJETOS QUE SEAN DE TIPO BUTTON
+        var botones = document.getElementsByTagName("button")
+        // for (var i = 0; i < botones.length; i++) {
+        //     botones[i].addEventListener("click", function(){
+        //         total += parseInt(this.innerText)
+        //         document.getElementById("resultado").innerText = "La suma es: " + total;
+        //     })
+        // }
+        for (boton of botones) {
+            boton.addEventListener("click", function(){
+                total += parseInt(this.innerText)
+                document.getElementById("resultado").innerText = "La suma es: " + total;
+            })
+        }
+        document.getElementById("resultado").innerText = "La suma es: " + total;
+    }
+
+    function sumaNumero(){
+        total += parseInt(this.innerText)
+        document.getElementById("resultado").innerText = "La suma es: " + total;
+    }
+</script>
+</html>

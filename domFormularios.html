@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>DOM formularios</h1>
+    <input type="radio" name="colores" value="red">Rojo<br>
+    <input type="radio" name="colores" value="yellow">Amarillo<br>
+    <input type="radio" name="colores" value="orange">Naranja<br>
+    <button type="button" onclick="mostrarColor()">Color seleccionado</button>
+    <h1 id="resultadoColor">Soy un TITULO</h1>
+    <hr>
+    <label>Deporte favorito</label>
+    <select id="deportes" multiple>
+        <option value="Petanca">Petanca</option>
+        <option value="Curling">Curling</option>
+        <option value="Tenis">Tenis</option>
+        <option value="Futbol">Futbol</option>
+    </select>
+    <button type="button" onclick="mostrarDeporte()">Mostrar deporte seleccionado</button>
+    <h1 id="resultadoDeporte"></h1>
+</body>
+<script>
+
+    function mostrarColor(){
+        //SI PONEMOS TODOS LOS NAME IGUALES EN CONTROLES
+        //DE FORULARIO PODEMOS BUSCARLOS MEDIANTE
+        //EL MÉTODO getElementsByName
+        //SI ESTAMOS DENTO DE UN FORMULARIO
+        //document.forms[0].NAME
+        var colores = document.getElementsByName("colores")
+        for (var radio of colores) {
+            if(radio.checked){
+                document.getElementById("resultadoColor").style.backgroundColor = radio.value;
+                document.getElementById("resultadoColor").innerText = radio.value;
+            }            
+        }
+    }
+
+    function mostrarDeporte(){
+        var select = document.getElementById("deportes");
+        var html = "";
+        //DENTRO DE UN SELECT TENEMOS UN ARRAY EN DOM QUE ES options
+        for (var opcion of select.options){
+            if(opcion.selected){
+                //document.getElementById("resultadoDeporte").innerText = option.value;
+                html += opcion.value + ",";
+            }
+            //LOS option TIENEN UN ATRIBUTO LLAMADO selected PARA VISUALIZAR SI ESTAN SELECCIONADOS.
+        }
+        document.getElementById("resultadoDeporte").innerHTML = html;
+    }
+
+</script>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="isbn">
+    <button type="button" onclick="obtenerIsbn()">Comprobar isbn</button>
+    <input type="text" id="dni">
+    <button type="button" onclick="obtenerLetra()">Obtener la letra</button>
+    <h1 style="color:red" id="resultado"></h1>
+</body>
+<script>
+    function obtenerLetra(){
+        var letras = ["T", "R", "W", "A", "G", "M", "Y", "F", "P", "D", "X", "B", "N", "J", "Z", "S", "Q", "V", "H", "L", "C", "K", "E", "T"]
+        var dni = document.getElementById("dni")
+        if (dni.value == ""){
+            dni.style.color="red";
+        }else{
+            resultado = parseInt(dni.value) - (Math.trunc(dni.value / 23)) * 23;
+            document.getElementById("resultado").innerHTML = "La letra es: " + letras[resultado]
+        }        
+    }
+
+    function obtenerIsbn(){
+        isbn = document.getElementById("isbn").value;
+        var resultado = 0;
+        for (var i = 0; i < isbn.length; i++) {
+            resultado += parseInt(isbn.charAt(i)) * (i+1);
+            console.log(resultado)
+        }
+        var division = resultado % 11;
+        if (division == 0){
+            document.getElementById("resultado").innerHTML = "El isbn es correcto."
+        }else{
+            document.getElementById("resultado").innerHTML = "El isbn es incorrecto."
+        }
+    }
+
+</script>
+</html>

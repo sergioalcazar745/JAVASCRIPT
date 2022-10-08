@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba</title>
+</head>
+<body>
+    <h1>Prueba</h1>
+    <label for="numero1">Número 1</label>
+    <input type="text" id="numero1">
+    <label for="numero2">Número 2</label>
+    <input type="text" id="numero2">
+    <button type="button" onclick="sumarNumeros()">Sumar números</button>
+    <button type="button" onclick="mostrarSaludo()">Saludar</button>
+    <h2 id="resultado"></h2>
+    <label for="cajanumero">Introduzca un número</label>
+    <input type="text" id="cajanumero">
+    <button type="button" onclick="mostrarTabla()">Mostrar Tabla</button>
+    <table border="1" id="tabla"></table>
+</body>
+<script>
+
+    //Función saludar
+    function mostrarSaludo(){
+        alert("Hola")
+        console.log("Prueba de desarrollo")
+    }
+
+    //Función saludar
+    function sumarNumeros(){
+        cabecera = document.getElementById("resultado");
+        resultado = parseInt(document.getElementById("numero1").value) + parseInt(document.getElementById("numero2").value);
+
+        if (resultado >= 0)
+            cabecera.style.color = "green";
+        else
+            cabecera.style.color = "red";
+
+        cabecera.innerHTML = "La suma es: " + resultado;
+    }
+
+    //Función mostrar tabla de multiplicar
+    function mostrarTabla(){
+        var cajanumero = document.getElementById("cajanumero").value;
+        var html = "";
+        var numero = 7
+        //REALIZAMOS UN BUCLE 1...10
+        for (let i = 0; i < 10; i++) {
+            var operacion = numero + " * " + i;
+            var resultado = numero * i;
+            var html = 
+            `<tr>
+                <td>${operacion}</td>
+                <td>${resultado}</td>
+            </tr>`;
+            document.getElementById("tabla").innerHTML += html;             
+        }
+    }
+
+</script>
+</html>

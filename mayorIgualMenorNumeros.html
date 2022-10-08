@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container" style="border: 1px solid gray; border-radius: 5px;">
+        <label for="numero1"></label>
+        <input type="text" id="numero1">
+        <label for="numero2"></label>
+        <input type="text" id="numero2">
+        <label for="numero3"></label>
+        <input type="text" id="numero3">
+        <button type="button" onclick="evaluarNumeros()">Evaluar números</button>
+    </div>
+    <h1 id="resultadoMayor"></h1>
+    <h1 id="resultadoMedio"></h1>
+    <h1 id="resultadoMenor"></h1>
+</body>
+<script>
+    //Calcular el número mayor, medio y menor
+    function evaluarNumeros(){
+        var numero1 = parseInt(document.getElementById("numero1").value)
+        var numero2 = parseInt(document.getElementById("numero2").value)
+        var numero3 = parseInt(document.getElementById("numero3").value)
+        var mayor = ""
+        var medio = ""
+        var menor = ""
+        
+        if(numero1 > numero2 && numero1 > numero3){
+            if(numero2 > numero3){
+                medio = numero2     
+                menor = numero3           
+            }else{
+                medio = numero3   
+                menor = numero2
+            }
+            mayor = numero1
+        } else if(numero2 > numero1 && numero2 > numero3){
+            if(numero1 > numero3){
+                medio = numero1
+                menor = numero3
+            }else{
+                medio = numero3
+                menor = numero1
+            }
+            mayor = numero2
+        } else if(numero3 > numero2 && numero3 > numero1){
+            if(numero2 > numero1){
+                medio = numero2    
+                menor = numero1            
+            }else{
+                medio = numero1
+                menor = numero2
+            }
+            mayor = numero3
+        }
+
+        document.getElementById("resultadoMayor").innerHTML = "Mayor: " + mayor
+        document.getElementById("resultadoMedio").innerHTML = "Medio: " + medio
+        document.getElementById("resultadoMenor").innerHTML = "Menor: " + menor
+    }
+</script>
+</html>

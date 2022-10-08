@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Sumar valores cajas con Random</h1>
+    <input type="radio" name="tipo" value="par" id="par" checked>Par
+    <input type="radio" name="tipo" value="impar" id="impar">Impar<br>
+    <input type="text"><br>
+    <input type="text"><br>
+    <input type="text"><br>
+    <input type="text"><br>
+    <button type="text" id="boton">Sumar valores</button>
+    <h1 style="color: red;" id="resultado"></h1>
+</body>
+<script>
+    var inputs = "";
+    window.onload = function(){
+        inputs = document.querySelectorAll("input[type=text]");
+        for (var i = 0; i < inputs.length; i++) {
+            var random = Math.floor(Math.random() * 20);
+            if(i%2 == 0){
+                inputs[i].style.backgroundColor = "magenta";
+            }else{
+                inputs[i].style.backgroundColor = "yellow";
+            }
+            inputs[i].value = random;    
+        }
+        var boton = document.getElementById("boton");
+        boton.addEventListener("click", sumarValores)
+    }
+
+    function sumarValores(){
+        var resultado = 0;
+        var checkeado = document.querySelectorAll("input:checked");
+        for (var i = 0; i < inputs.length; i++) {
+            if(checkeado[0].value == "par"){
+                console.log("hola")
+                if(i%2 == 0){
+                    resultado += parseInt(inputs[i].value);
+                } 
+            }else{
+                if(i%2 != 0){
+                    resultado += parseInt(inputs[i].value);
+                }
+            }                   
+        }
+        document.getElementById("resultado").innerText = "La suma es: " + resultado;
+    }
+</script>
+</html>

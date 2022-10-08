@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Generar controles dinámicos checkbox</h1>
+    <input type="range" id="rango" min="1" max="14" value="1" onchange="crearInputs()">
+    <h4 id="valorrango">1</h4>
+    <div id="capa"></div>
+    <h1 style="color: red;" id="resultado"></h1>
+</body>
+<script>
+    var resultado = 0;    
+    function crearInputs(){
+        var capa = document.getElementById("capa");
+        var rango = document.getElementById("rango");
+        document.getElementById("valorrango").innerText = rango.value;
+        var numeroInput = parseInt(rango.value);
+        //BUCLE PARA AGREGAR X IMAGENES
+        capa.innerHTML = "";
+        for (var i = 0; i < numeroInput; i++) {
+            //CREAMOS OBJETO INPUT POR CADA ITERACION
+            var input = document.createElement("input");
+            var span = document.createElement("span");
+            //ASIGNAMOS LAS PROPIEDADES QUE DESEEMOS
+            var random = Math.floor(Math.random() * 20);
+            span.innerText = random;
+            input.type = "checkbox";
+            input.value = random;
+            span.appendChild(input);
+            //AGREGAMOS EL INPUT AL PARENT
+            capa.appendChild(span);
+            input.addEventListener("click", function(){
+                if (this.checked){
+                    resultado += parseInt(this.value);
+                }else{
+                    resultado -= parseInt(this.value);
+                }
+                document.getElementById("resultado").innerText = resultado;
+            });
+        }
+    }
+</script>
+</html>
